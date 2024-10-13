@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+    <style>
+        body { 
+            font-family:'Times New Roman', Times, serif;
+            background-color:aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .game-container {
+             background-color:bisque;
+             padding: 20px;
+             border-radius: 40%;
+             box-shadow: 5px 5px 10px rgba(1, 2, 5, 10);
+             text-align: center;
+
+             input[tipe="number"] {
+                padding: 10px;
+                width: 80;
+                margin: 12px 0;
+                border: 5px solid #00000000;
+                border-radius: 4px;
+            }
+            button:hover { 
+                background-color: rgb(238, 142, 142);
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>JOGO MERDA DE ADIVINHACAO</h1>
+        <p> Adivinhe a porra do numero que estou pensando</p>
+        <input type="number" id="guess" placeholder=" Digite essa merda">
+        <button onclick="checkGues()">Adivinhar</button>
+        <p id="message"></p>
+
+    </div>
+    <script>
+        let secretNumber = Math.floor(math.random()*100)+1;
+
+        function checkGues() {
+            const guess = document.getElementById('guess').value;
+            const messageElement = document.getElementById(' message ');
+            if(!guess || guess < 1 ||guess >100) {messageElement.textContent = 'vc e sonso, digite o caralho do numero de 1 a 100';return;
+                
+            }
+            const guessNumber = Number(guess);
+
+            if(guessNumber=== secretNumber) { 
+                messageElement.textContent = 'finalmente acertou a porra do numero em...';
+            } else if(guessNumber < secretNumber) {
+                messageElement.textContent = 'parabens vc e um bosta e errou (vc esta muito baixo)';
+            }else { 
+                messageElement.textContent = 'parabens dnv so que agr seu merdinha, vc esta muito alto';
+            }
+        }
+        document.getElementById('submit').addEventListener('click', checkGuess);
+    </script>
+</body>
+</html>
